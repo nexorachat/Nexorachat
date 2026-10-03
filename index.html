@@ -1,1589 +1,401 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="NEXORA crea páginas web modernas, chatbots con inteligencia artificial y experiencias digitales para negocios.">
-
-  <title>NEXORA — Digital experiences. Built for what's next.</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#08090d;
-      --panel:#11131b;
-      --text:#f4f5f7;
-      --muted:#a1a5b3;
-      --line:rgba(255,255,255,.12);
-      --accent:#a6f36a;
-      --blue:#7a8cff;
-    }
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:'DM Sans',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .wrap{
-      width:min(1120px,calc(100% - 40px));
-      margin:auto;
-    }
-
-    /* NAV */
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(8,9,13,.78);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--line);
-    }
-
-    .navin{
-      height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .logo{
-      font:700 1.45rem 'Space Grotesk',sans-serif;
-      letter-spacing:-1px;
-    }
-
-    .logo span{
-      color:var(--accent);
-    }
-
-    .links{
-      display:flex;
-      align-items:center;
-      gap:25px;
-      color:#c4c7d0;
-      font-size:.88rem;
-    }
-
-    .links a:hover{
-      color:var(--accent);
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:13px 19px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:.85rem;
-      border:1px solid var(--line);
-      transition:.25s;
-      cursor:pointer;
-    }
-
-    .btn.primary{
-      background:var(--accent);
-      color:#10120d;
-      border-color:var(--accent);
-    }
-
-    .btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 10px 35px #a6f36a22;
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:690px;
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      align-items:center;
-      gap:40px;
-      padding:85px 0 95px;
-      position:relative;
-    }
-
-    .eyebrow{
-      color:var(--accent);
-      text-transform:uppercase;
-      letter-spacing:2.5px;
-      font-size:.72rem;
-      font-weight:700;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .dot{
-      width:7px;
-      height:7px;
-      background:var(--accent);
-      border-radius:50%;
-      box-shadow:0 0 16px var(--accent);
-    }
-
-    h1,h2,h3{
-      font-family:'Space Grotesk',sans-serif;
-      letter-spacing:-.045em;
-      line-height:1.06;
-    }
-
-    h1{
-      font-size:clamp(3.7rem,8vw,7.1rem);
-      margin:24px 0;
-    }
-
-    h1 .shine{
-      background:linear-gradient(
-        100deg,
-        #fff 15%,
-        #a6f36a 60%,
-        #7a8cff
-      );
-
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .lead{
-      font-size:1.08rem;
-      color:var(--muted);
-      max-width:570px;
-      line-height:1.8;
-    }
-
-    .actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:30px;
-    }
-
-    .note{
-      margin-top:25px;
-      color:#737887;
-      font-size:.8rem;
-    }
-
-    /* VISUAL */
-
-    .visual{
-      height:460px;
-      position:relative;
-      display:grid;
-      place-items:center;
-      isolation:isolate;
-    }
-
-    .orb{
-      width:min(340px,75vw);
-      aspect-ratio:1;
-      border-radius:50%;
-
-      background:
-        radial-gradient(
-          circle at 30% 25%,
-          #e0ffc0 0,
-          #a6f36a 8%,
-          #506c9e 34%,
-          #171b35 61%,
-          #08090d 73%
-        );
-
-      box-shadow:
-        inset -25px -30px 65px #020307,
-        0 0 90px #7a8cff26;
-
-      animation:float 7s ease-in-out infinite;
-      position:relative;
-    }
-
-    .orb:before,
-    .orb:after{
-      content:"";
-      position:absolute;
-      inset:-24px;
-      border:1px solid #a6f36a55;
-      border-radius:50%;
-      transform:rotate(-28deg) scaleY(.35);
-    }
-
-    .orb:after{
-      inset:-52px;
-      border-color:#7a8cff55;
-      transform:rotate(35deg) scaleY(.28);
-    }
-
-    .orbit-label{
-      position:absolute;
-      padding:12px 16px;
-      background:#141721cc;
-      border:1px solid var(--line);
-      border-radius:14px;
-      backdrop-filter:blur(12px);
-      font-size:.8rem;
-      box-shadow:0 15px 45px #0005;
-    }
-
-    .orbit-label b{
-      display:block;
-      color:var(--accent);
-      font-size:.72rem;
-      margin-bottom:3px;
-    }
-
-    .l1{
-      top:70px;
-      left:0;
-    }
-
-    .l2{
-      right:-4px;
-      top:170px;
-    }
-
-    .l3{
-      bottom:58px;
-      left:15px;
-    }
-
-    @keyframes float{
-      0%,100%{
-        transform:translateY(0) rotate(-5deg);
-      }
-
-      50%{
-        transform:translateY(-15px) rotate(5deg);
-      }
-    }
-
-    /* SECTIONS */
-
-    section{
-      padding:95px 0;
-      border-top:1px solid var(--line);
-    }
-
-    .sectionhead{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:30px;
-      margin-bottom:38px;
-    }
-
-    .kicker{
-      color:var(--accent);
-      font-size:.72rem;
-      font-weight:700;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:13px;
-    }
-
-    h2{
-      font-size:clamp(2.5rem,5vw,4.2rem);
-      max-width:720px;
-    }
-
-    .sectionhead p{
-      max-width:350px;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    /* SERVICES */
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:15px;
-    }
-
-    .card{
-      background:linear-gradient(
-        145deg,
-        #151822,
-        #0e1016
-      );
-
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:28px;
-      min-height:230px;
-      transition:.3s;
-    }
-
-    .card:hover{
-      transform:translateY(-6px);
-      border-color:#a6f36a66;
-    }
-
-    .iconbox{
-      width:46px;
-      height:46px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:#a6f36a15;
-      color:var(--accent);
-      font-size:1.3rem;
-      margin-bottom:27px;
-    }
-
-    h3{
-      font-size:1.4rem;
-      margin-bottom:12px;
-      letter-spacing:-.03em;
-    }
-
-    .card p{
-      color:var(--muted);
-      font-size:.92rem;
-    }
-
-    /* PROJECT */
-
-    .project{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-
-      background:linear-gradient(
-        120deg,
-        #141720,
-        #0c0e14
-      );
-
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:clamp(25px,5vw,55px);
-    }
-
-    .projectvisual{
-      min-height:290px;
-      border-radius:20px;
-
-      background:
-        radial-gradient(
-          circle at 65% 25%,
-          #7a8cff66,
-          transparent 32%
-        ),
-        linear-gradient(
-          140deg,
-          #202638,
-          #0b0d13
-        );
-
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .browser{
-      width:78%;
-      border:1px solid #ffffff35;
-      background:#0b0d13e8;
-      border-radius:12px;
-      padding:12px;
-      box-shadow:0 25px 65px #0008;
-      transform:rotate(-4deg);
-    }
-
-    .browserbar{
-      display:flex;
-      gap:5px;
-      border-bottom:1px solid var(--line);
-      padding-bottom:10px;
-      margin-bottom:18px;
-    }
-
-    .browserbar i{
-      width:6px;
-      height:6px;
-      border-radius:50%;
-      background:#777;
-    }
-
-    .mocktitle{
-      font:700 1.6rem 'Space Grotesk';
-      margin:10px 0;
-    }
-
-    .mockline{
-      height:7px;
-      background:#ffffff19;
-      border-radius:5px;
-      margin:8px 0;
-      width:85%;
-    }
-
-    .mockline.short{
-      width:55%;
-    }
-
-    .tag{
-      display:inline-block;
-      font-size:.7rem;
-      color:var(--accent);
-      border:1px solid #a6f36a44;
-      border-radius:99px;
-      padding:6px 10px;
-      margin-bottom:18px;
-    }
-
-    .project p{
-      color:var(--muted);
-      margin:18px 0 25px;
-    }
-
-    /* PROCESS */
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:15px;
-      counter-reset:step;
-    }
-
-    .step{
-      border-top:1px solid var(--line);
-      padding:20px 10px 0 0;
-      counter-increment:step;
-    }
-
-    .step:before{
-      content:"0" counter(step);
-      color:var(--accent);
-      font:600 .85rem 'Space Grotesk';
-      display:block;
-      margin-bottom:22px;
-    }
-
-    .step p{
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    /* PRICES */
-
-    .pricecard{
-      background:#11131b;
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:28px;
-      display:flex;
-      flex-direction:column;
-      min-height:300px;
-    }
-
-    .pricecard.featured{
-      border-color:#a6f36a88;
-      background:linear-gradient(
-        150deg,
-        #1b211a,
-        #11131b 65%
-      );
-    }
-
-    .price{
-      font:600 2.4rem 'Space Grotesk';
-      margin:22px 0 5px;
-    }
-
-    .price small{
-      font:400 .85rem 'DM Sans';
-      color:var(--muted);
-    }
-
-    .pricecard p{
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    .pricecard ul{
-      list-style:none;
-      margin:20px 0 28px;
-      color:#d5d7de;
-      font-size:.88rem;
-    }
-
-    .pricecard li{
-      margin:9px 0;
-    }
-
-    .pricecard li:before{
-      content:"✓";
-      color:var(--accent);
-      margin-right:9px;
-    }
-
-    .pricecard .btn{
-      margin-top:auto;
-    }
-
-    /* ABOUT */
-
-    .about{
-      display:grid;
-      grid-template-columns:.75fr 1.25fr;
-      gap:55px;
-      align-items:start;
-    }
-
-    .bigmark{
-      font:700 clamp(3rem,7vw,6rem) 'Space Grotesk';
-      letter-spacing:-.08em;
-      color:#20252d;
-    }
-
-    .about p{
-      color:var(--muted);
-      margin:0 0 18px;
-    }
-
-    /* REVIEW */
-
-    .quote{
-      border:1px dashed #ffffff25;
-      border-radius:20px;
-      padding:30px;
-      color:#c4c7d0;
-      background:#ffffff03;
-    }
-
-    .quote strong{
-      display:block;
-      color:var(--text);
-      margin-bottom:8px;
-    }
-
-    /* CONTACT */
-
-    .contactbox{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:45px;
-
-      background:linear-gradient(
-        120deg,
-        #171b25,
-        #0d0f15
-      );
-
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:clamp(25px,5vw,55px);
-    }
-
-    .contactbox p{
-      color:var(--muted);
-      margin-top:18px;
-    }
-
-    form{
-      display:grid;
-      gap:13px;
-    }
-
-    input,
-    select,
-    textarea{
-      width:100%;
-      padding:14px 15px;
-      background:#090b10;
-      border:1px solid #ffffff20;
-      border-radius:12px;
-      color:var(--text);
-      font:inherit;
-      outline:none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus{
-      border-color:#a6f36a99;
-    }
-
-    textarea{
-      min-height:120px;
-      resize:vertical;
-    }
-
-    .formhint{
-      font-size:.78rem;
-      color:#818695;
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:30px 0;
-      color:#858a98;
-      font-size:.82rem;
-    }
-
-    .footerin{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    /* ANIMATIONS */
-
-    .reveal{
-      opacity:0;
-      transform:translateY(18px);
-      transition:opacity .7s,transform .7s;
-    }
-
-    .reveal.show{
-      opacity:1;
-      transform:none;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:850px){
-
-      .links{
-        display:none;
-      }
-
-      .hero{
-        grid-template-columns:1fr;
-        padding-top:65px;
-      }
-
-      .visual{
-        height:370px;
-      }
-
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .project,
-      .about,
-      .contactbox{
-        grid-template-columns:1fr;
-      }
-
-      .steps{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .sectionhead{
-        align-items:start;
-        flex-direction:column;
-      }
-    }
-
-    @media(max-width:480px){
-
-      .wrap{
-        width:min(100% - 28px,1120px);
-      }
-
-      .navin{
-        height:66px;
-      }
-
-      .hero{
-        padding:55px 0 70px;
-      }
-
-      h1{
-        font-size:3.5rem;
-      }
-
-      .visual{
-        height:320px;
-      }
-
-      .orb{
-        width:235px;
-      }
-
-      .orbit-label{
-        font-size:.7rem;
-        padding:9px 11px;
-      }
-
-      .l2{
-        right:0;
-      }
-
-      .steps{
-        grid-template-columns:1fr 1fr;
-      }
-
-      section{
-        padding:70px 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NEXORA crea páginas web modernas, chatbots con inteligencia artificial y experiencias digitales para negocios.">
+<title>NEXORA — Digital experiences. Built for what's next.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090d;--panel:#11131b;--text:#f4f5f7;--muted:#a1a5b3;--line:rgba(255,255,255,.12);--accent:#a6f36a;--blue:#7a8cff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.nav{position:sticky;top:0;z-index:20;background:rgba(8,9,13,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font:700 1.45rem 'Space Grotesk',sans-serif;letter-spacing:-1px}
+.logo span{color:var(--accent)}
+.links{display:flex;align-items:center;gap:25px;color:#c4c7d0;font-size:.88rem}
+.links a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 19px;border-radius:999px;font-weight:700;font-size:.85rem;border:1px solid var(--line);transition:.25s;cursor:pointer;font-family:inherit;color:inherit;background:none}
+.btn.primary{background:var(--accent);color:#10120d;border-color:var(--accent)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 35px #a6f36a22}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.hero{min-height:690px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:40px;padding:85px 0 95px;position:relative}
+.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:2.5px;font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:10px}
+.dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 16px var(--accent)}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.045em;line-height:1.06}
+h1{font-size:clamp(3.7rem,8vw,7.1rem);margin:24px 0}
+h1 .shine{background:linear-gradient(100deg,#fff 15%,#a6f36a 60%,#7a8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.08rem;color:var(--muted);max-width:570px;line-height:1.8}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.note{margin-top:25px;color:#737887;font-size:.8rem}
+.visual{height:460px;position:relative;display:grid;place-items:center;isolation:isolate}
+.orb{width:min(340px,75vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#e0ffc0 0,#a6f36a 8%,#506c9e 34%,#171b35 61%,#08090d 73%);box-shadow:inset -25px -30px 65px #020307,0 0 90px #7a8cff26;animation:float 7s ease-in-out infinite;position:relative}
+.orb:before,.orb:after{content:"";position:absolute;inset:-24px;border:1px solid #a6f36a55;border-radius:50%;transform:rotate(-28deg) scaleY(.35)}
+.orb:after{inset:-52px;border-color:#7a8cff55;transform:rotate(35deg) scaleY(.28)}
+.orbit-label{position:absolute;padding:12px 16px;background:#141721cc;border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(12px);font-size:.8rem;box-shadow:0 15px 45px #0005}
+.orbit-label b{display:block;color:var(--accent);font-size:.72rem;margin-bottom:3px}
+.l1{top:70px;left:0}.l2{right:-4px;top:170px}.l3{bottom:58px;left:15px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-15px) rotate(5deg)}}
+section{padding:95px 0;border-top:1px solid var(--line)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+.kicker{color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:13px}
+h2{font-size:clamp(2.5rem,5vw,4.2rem);max-width:720px}
+.sectionhead p{max-width:350px;color:var(--muted);font-size:.95rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:linear-gradient(145deg,#151822,#0e1016);border:1px solid var(--line);border-radius:22px;padding:28px;min-height:230px;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:#a6f36a66}
+.iconbox{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#a6f36a15;color:var(--accent);font-size:1.3rem;margin-bottom:27px}
+h3{font-size:1.4rem;margin-bottom:12px;letter-spacing:-.03em}
+.card p{color:var(--muted);font-size:.92rem}
+.project{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:linear-gradient(120deg,#141720,#0c0e14);border:1px solid var(--line);border-radius:28px;padding:clamp(25px,5vw,55px)}
+.projectvisual{min-height:290px;border-radius:20px;background:radial-gradient(circle at 65% 25%,#7a8cff66,transparent 32%),linear-gradient(140deg,#202638,#0b0d13);display:grid;place-items:center;position:relative;overflow:hidden}
+.browser{width:78%;border:1px solid #ffffff35;background:#0b0d13e8;border-radius:12px;padding:12px;box-shadow:0 25px 65px #0008;transform:rotate(-4deg)}
+.browserbar{display:flex;gap:5px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:18px}
+.browserbar i{width:6px;height:6px;border-radius:50%;background:#777}
+.mocktitle{font:700 1.6rem 'Space Grotesk';margin:10px 0}
+.mockline{height:7px;background:#ffffff19;border-radius:5px;margin:8px 0;width:85%}
+.mockline.short{width:55%}
+.tag{display:inline-block;font-size:.7rem;color:var(--accent);border:1px solid #a6f36a44;border-radius:99px;padding:6px 10px;margin-bottom:18px}
+.project p{color:var(--muted);margin:18px 0 18px}
+.project ul{list-style:none;margin:0 0 4px;color:#d5d7de;font-size:.9rem}
+.project li{margin:9px 0}
+.project li:before{content:"✓";color:var(--accent);margin-right:9px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;counter-reset:step}
+.step{border-top:1px solid var(--line);padding:20px 10px 0 0;counter-increment:step}
+.step:before{content:"0" counter(step);color:var(--accent);font:600 .85rem 'Space Grotesk';display:block;margin-bottom:22px}
+.step p{color:var(--muted);font-size:.9rem}
+.pricecard{background:#11131b;border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;min-height:300px}
+.pricecard.featured{border-color:#a6f36a88;background:linear-gradient(150deg,#1b211a,#11131b 65%)}
+.price{font:600 2.4rem 'Space Grotesk';margin:22px 0 5px}
+.price small{font:400 .85rem 'DM Sans';color:var(--muted)}
+.pricecard p{color:var(--muted);font-size:.9rem}
+.pricecard ul{list-style:none;margin:20px 0 28px;color:#d5d7de;font-size:.88rem}
+.pricecard li{margin:9px 0}
+.pricecard li:before{content:"✓";color:var(--accent);margin-right:9px}
+.pricecard .btn{margin-top:auto}
+.about{display:grid;grid-template-columns:.75fr 1.25fr;gap:55px;align-items:start}
+.bigmark{font:700 clamp(3rem,7vw,6rem) 'Space Grotesk';letter-spacing:-.08em;color:#20252d}
+.about p{color:var(--muted);margin:0 0 18px}
+.quote{border:1px dashed #ffffff25;border-radius:20px;padding:30px;color:#c4c7d0;background:#ffffff03}
+.quote strong{display:block;color:var(--text);margin-bottom:8px}
+.contactbox{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;background:linear-gradient(120deg,#171b25,#0d0f15);border:1px solid var(--line);border-radius:28px;padding:clamp(25px,5vw,55px)}
+.contactbox p{color:var(--muted);margin-top:18px}
+form{display:grid;gap:13px}
+input,select,textarea{width:100%;padding:14px 15px;background:#090b10;border:1px solid #ffffff20;border-radius:12px;color:var(--text);font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#a6f36a99}
+textarea{min-height:120px;resize:vertical}
+.hp{display:none}
+.formhint{font-size:.78rem;color:#818695}
+.status{font-size:.92rem;min-height:1.4em;color:#818695}
+.status.ok{color:var(--accent)}
+.status.err{color:#ff8a8a}
+footer{padding:30px 0;color:#858a98;font-size:.82rem}
+.footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:850px){
+.links{display:none}
+.hero{grid-template-columns:1fr;padding-top:65px}
+.visual{height:370px}
+.grid{grid-template-columns:1fr}
+.project,.about,.contactbox{grid-template-columns:1fr}
+.steps{grid-template-columns:repeat(2,1fr)}
+.sectionhead{align-items:start;flex-direction:column}}
+@media(max-width:480px){
+.wrap{width:min(100% - 28px,1120px)}
+.navin{height:66px}
+.hero{padding:55px 0 70px}
+h1{font-size:3.5rem}
+.visual{height:320px}
+.orb{width:235px}
+.orbit-label{font-size:.7rem;padding:9px 11px}
+.l2{right:0}
+.steps{grid-template-columns:1fr 1fr}
+section{padding:70px 0}}
+</style>
 </head>
-
 <body>
 
-  <!-- NAVEGACIÓN -->
-
-  <header class="nav">
-
-    <div class="wrap navin">
-
-      <a class="logo" href="#inicio">
-        NEXORA<span>.</span>
-      </a>
-
-      <nav class="links">
-
-        <a href="#servicios">Servicios</a>
-
-        <a href="#proyectos">Proyectos</a>
-
-        <a href="#proceso">Proceso</a>
-
-        <a href="#precios">Precios</a>
-
-        <a href="#sobre">Sobre NEXORA</a>
-
-      </nav>
-
-      <a class="btn primary" href="#contacto">
-        Hablemos ↗
-      </a>
-
-    </div>
-
-  </header>
-
-
-  <main>
-
-    <!-- HERO -->
-
-    <div class="wrap hero" id="inicio">
-
-      <div class="reveal">
-
-        <div class="eyebrow">
-          <span class="dot"></span>
-          Estudio digital independiente
-        </div>
-
-        <h1>
-          Digital ideas.<br>
-          <span class="shine">Real impact.</span>
-        </h1>
-
-        <p class="lead">
-          Digital experiences. Built for what's next.
-          Creamos páginas web modernas, chatbots con inteligencia
-          artificial y experiencias digitales pensadas para negocios
-          que quieren dar el siguiente paso.
-        </p>
-
-        <div class="actions">
-
-          <a class="btn primary" href="#contacto">
-            EMPEZAR UN PROYECTO ↗
-          </a>
-
-          <a class="btn" href="#proyectos">
-            VER PROYECTOS ↓
-          </a>
-
-        </div>
-
-        <p class="note">
-          Diseño con intención. Tecnología útil. Ideas que avanzan.
-        </p>
-
-      </div>
-
-
-      <div class="visual reveal">
-
-        <div class="orb"></div>
-
-        <div class="orbit-label l1">
-          <b>01 / WEB</b>
-          Diseño moderno
-        </div>
-
-        <div class="orbit-label l2">
-          <b>02 / AI</b>
-          Chatbots inteligentes
-        </div>
-
-        <div class="orbit-label l3">
-          <b>03 / DIGITAL</b>
-          Soluciones a medida
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- SERVICIOS -->
-
-    <section id="servicios">
-
-      <div class="wrap">
-
-        <div class="sectionhead reveal">
-
-          <div>
-
-            <div class="kicker">
-              Qué hacemos
-            </div>
-
-            <h2>
-              Tu negocio merece una presencia digital a su altura.
-            </h2>
-
-          </div>
-
-          <p>
-            Soluciones claras y actuales para presentar tu marca,
-            atender a tus clientes y crecer online.
-          </p>
-
-        </div>
-
-
-        <div class="grid">
-
-          <article class="card reveal">
-
-            <div class="iconbox">
-              ↗
-            </div>
-
-            <h3>
-              Páginas web
-            </h3>
-
-            <p>
-              Webs adaptadas a móvil, con diseño cuidado,
-              estructura clara y llamadas a la acción para
-              convertir visitas en contactos.
-            </p>
-
-          </article>
-
-
-          <article class="card reveal">
-
-            <div class="iconbox">
-              ✳
-            </div>
-
-            <h3>
-              Chatbots con IA
-            </h3>
-
-            <p>
-              Asistentes que responden preguntas frecuentes
-              y ayudan a tus visitantes a encontrar información,
-              incluso fuera de horario.
-            </p>
-
-          </article>
-
-
-          <article class="card reveal">
-
-            <div class="iconbox">
-              ⌘
-            </div>
-
-            <h3>
-              Soluciones digitales
-            </h3>
-
-            <p>
-              Ideas y herramientas digitales pensadas para
-              las necesidades reales de tu negocio o proyecto.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROYECTOS -->
-
-    <section id="proyectos">
-
-      <div class="wrap">
-
-        <div class="sectionhead reveal">
-
-          <div>
-
-            <div class="kicker">
-              Trabajo seleccionado
-            </div>
-
-            <h2>
-              Ideas que salen de la pantalla y se ponen en marcha.
-            </h2>
-
-          </div>
-
-          <p>
-            Un proyecto real que muestra cómo la información
-            puede ser más fácil de encontrar.
-          </p>
-
-        </div>
-
-
-        <div class="project reveal">
-
-          <div class="projectvisual">
-
-            <div class="browser">
-
-              <div class="browserbar">
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-
-              <div class="tag">
-                ASISTENTE IA
-              </div>
-
-              <div class="mocktitle">
-                IES Gerardo Molina
-              </div>
-
-              <div class="mockline"></div>
-              <div class="mockline short"></div>
-              <div class="mockline"></div>
-
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <span class="tag">
-              CHATBOT · EDUCACIÓN
-            </span>
-
-            <h2>
-              IES Gerardo Molina
-            </h2>
-
-            <p>
-              Chatbot informativo creado para ayudar a encontrar
-              información del instituto y responder preguntas
-              frecuentes en español.
-            </p>
-
-            <a
-              class="btn primary"
-              href="https://share.conferbot.com/c/n5w7wafp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              PROBAR CHATBOT ↗
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROCESO -->
-
-    <section id="proceso">
-
-      <div class="wrap">
-
-        <div class="sectionhead reveal">
-
-          <div>
-
-            <div class="kicker">
-              Cómo trabajamos
-            </div>
-
-            <h2>
-              Un proceso sencillo, de principio a fin.
-            </h2>
-
-          </div>
-
-          <p>
-            Comunicación clara en cada etapa.
-            Sin complicaciones innecesarias.
-          </p>
-
-        </div>
-
-
-        <div class="steps">
-
-          <div class="step reveal">
-
-            <h3>
-              Nos cuentas
-            </h3>
-
-            <p>
-              Hablamos de tu idea, tu negocio y lo que necesitas
-              conseguir.
-            </p>
-
-          </div>
-
-
-          <div class="step reveal">
-
-            <h3>
-              Lo definimos
-            </h3>
-
-            <p>
-              Acordamos alcance, plazos y presupuesto
-              antes de empezar.
-            </p>
-
-          </div>
-
-
-          <div class="step reveal">
-
-            <h3>
-              Lo construimos
-            </h3>
-
-            <p>
-              Diseñamos y desarrollamos tu solución
-              con revisiones contigo.
-            </p>
-
-          </div>
-
-
-          <div class="step reveal">
-
-            <h3>
-              Lo lanzamos
-            </h3>
-
-            <p>
-              Revisamos los detalles y dejamos el proyecto
-              listo para usar.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PRECIOS -->
-
-    <section id="precios">
-
-      <div class="wrap">
-
-        <div class="sectionhead reveal">
-
-          <div>
-
-            <div class="kicker">
-              Precios orientativos
-            </div>
-
-            <h2>
-              Un punto de partida para tu proyecto.
-            </h2>
-
-          </div>
-
-          <p>
-            El precio final depende de las funciones,
-            el contenido y el alcance acordado.
-          </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-          <article class="pricecard reveal">
-
-            <span class="tag">
-              PRESENCIA ONLINE
-            </span>
-
-            <h3>
-              Página web
-            </h3>
-
-            <div class="price">
-              Desde 249€
-            </div>
-
-            <p>
-              Para presentar tu negocio de forma profesional.
-            </p>
-
-            <ul>
-              <li>Diseño adaptable a móvil</li>
-              <li>Secciones esenciales</li>
-              <li>Contacto y enlaces</li>
-            </ul>
-
-            <a class="btn" href="#contacto">
-              Consultar proyecto ↗
-            </a>
-
-          </article>
-
-
-          <article class="pricecard featured reveal">
-
-            <span class="tag">
-              ATENCIÓN AUTOMATIZADA
-            </span>
-
-            <h3>
-              Chatbot con IA
-            </h3>
-
-            <div class="price">
-              Desde 149€
-            </div>
-
-            <p>
-              Para ayudar a tus clientes a resolver dudas frecuentes.
-            </p>
-
-            <ul>
-              <li>Configuración inicial</li>
-              <li>Respuestas basadas en información</li>
-              <li>Orientación para integrarlo</li>
-            </ul>
-
-            <a class="btn primary" href="#contacto">
-              Consultar proyecto ↗
-            </a>
-
-          </article>
-
-
-          <article class="pricecard reveal">
-
-            <span class="tag">
-              SOLUCIÓN COMPLETA
-            </span>
-
-            <h3>
-              Web + chatbot
-            </h3>
-
-            <div class="price">
-              Desde 349€
-            </div>
-
-            <p>
-              Una presencia web con un asistente integrado.
-            </p>
-
-            <ul>
-              <li>Página web</li>
-              <li>Chatbot con IA</li>
-              <li>Configuración coordinada</li>
-            </ul>
-
-            <a class="btn" href="#contacto">
-              Consultar proyecto ↗
-            </a>
-
-          </article>
-
-        </div>
-
-
-        <p
-          class="formhint"
-          style="margin-top:18px"
-        >
-          Precios iniciales orientativos. El presupuesto definitivo
-          se confirma por escrito antes de comenzar.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- SOBRE NEXORA -->
-
-    <section id="sobre">
-
-      <div class="wrap about">
-
-        <div class="reveal">
-
-          <div class="kicker">
-            Sobre NEXORA
-          </div>
-
-          <div class="bigmark">
-            NEX<br>
-            ORA.
-          </div>
-
-        </div>
-
-
-        <div class="reveal">
-
-          <h2>
-            Aprender. Crear. Mejorar.
-          </h2>
-
-          <p>
-            NEXORA nace de la curiosidad por la tecnología
-            y las ganas de convertir ideas en proyectos
-            digitales útiles.
-          </p>
-
-          <p>
-            He aprendido creando, probando, equivocándome
-            y volviendo a intentarlo. Hoy centro ese aprendizaje
-            en páginas web y chatbots con inteligencia artificial
-            para ayudar a negocios y personas a dar sus primeros
-            pasos digitales.
-          </p>
-
-          <p>
-            Cada proyecto es una oportunidad para escuchar,
-            encontrar una solución y construir algo que tenga
-            sentido para quien lo necesita.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- OPINIONES -->
-
-    <section id="opiniones">
-
-      <div class="wrap">
-
-        <div class="quote reveal">
-
-          <strong>
-            Tu proyecto podría ser el siguiente.
-          </strong>
-
-          Estoy construyendo NEXORA proyecto a proyecto.
-          Cuando haya opiniones reales de clientes, aparecerán
-          aquí con su permiso.
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACTO -->
-
-    <section id="contacto">
-
-      <div class="wrap contactbox">
-
-        <div class="reveal">
-
-          <div class="kicker">
-            Hablemos
-          </div>
-
-          <h2>
-            ¿Tienes una idea? Hagámosla realidad.
-          </h2>
-
-          <p>
-            Cuéntame qué necesitas. Revisaré tu propuesta
-            y me pondré en contacto contigo para hablar
-            de los siguientes pasos.
-          </p>
-
-          <p>
-            <strong>Email</strong><br>
-
-            <a href="mailto:anouarramdani50@gmail.com">
-              anouarramdani50@gmail.com
-            </a>
-          </p>
-
-          <p>
-            <strong>Instagram</strong><br>
-
-            <a
-              href="https://instagram.com/anouarweb"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @anouarweb ↗
-            </a>
-          </p>
-
-        </div>
-
-
-        <form id="projectForm" class="reveal">
-
-          <input
-            name="nombre"
-            placeholder="Tu nombre"
-            required
-          >
-
-          <input
-            name="empresa"
-            placeholder="Empresa o negocio (opcional)"
-          >
-
-          <input
-            name="email"
-            type="email"
-            placeholder="Tu email"
-            required
-          >
-
-          <select
-            name="servicio"
-            required
-          >
-
-            <option value="">
-              ¿Qué necesitas?
-            </option>
-
-            <option>
-              Página web
-            </option>
-
-            <option>
-              Chatbot con IA
-            </option>
-
-            <option>
-              Página web + chatbot
-            </option>
-
-            <option>
-              Otro proyecto
-            </option>
-
-          </select>
-
-
-          <textarea
-            name="idea"
-            placeholder="Cuéntame un poco sobre tu idea..."
-            required
-          ></textarea>
-
-
-          <button
-            class="btn primary"
-            type="submit"
-          >
-            PREPARAR SOLICITUD ↗
-          </button>
-
-
-          <p class="formhint">
-            Este formulario abrirá tu aplicación de correo
-            con el mensaje preparado; tendrás que enviarlo
-            desde allí.
-          </p>
-
-        </form>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="wrap footerin">
-
-      <a class="logo" href="#inicio">
-        NEXORA<span>.</span>
-      </a>
-
-      <span>
-        Digital experiences. Built for what's next.
-      </span>
-
-      <span>
-        © <span id="year"></span> NEXORA
-      </span>
-
-    </div>
-
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
-
-  <script>
-
-    const observer = new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add('show');
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-
-      {
-        threshold:.12
-      }
-    );
-
-
-    document
-      .querySelectorAll('.reveal')
-      .forEach(el => observer.observe(el));
-
-
-    document.getElementById('year').textContent =
-      new Date().getFullYear();
-
-
-    document
-      .getElementById('projectForm')
-      .addEventListener('submit', function(e){
-
-        e.preventDefault();
-
-        const d = new FormData(this);
-
-        const subject =
-          encodeURIComponent(
-            'Nuevo proyecto NEXORA — ' +
-            d.get('servicio')
-          );
-
-        const body =
-          encodeURIComponent(
-
-            'Nombre: ' +
-            d.get('nombre') +
-
-            '\n' +
-
-            'Empresa: ' +
-            (d.get('empresa') || 'No indicada') +
-
-            '\n' +
-
-            'Email: ' +
-            d.get('email') +
-
-            '\n' +
-
-            'Servicio: ' +
-            d.get('servicio') +
-
-            '\n\n' +
-
-            'Idea:\n' +
-            d.get('idea')
-
-          );
-
-
-        window.location.href =
-          'mailto:anouarramdani50@gmail.com' +
-          '?subject=' +
-          subject +
-          '&body=' +
-          body;
-
-      });
-
-  </script>
+<header class="nav">
+<div class="wrap navin">
+<a class="logo" href="#inicio">NEXORA<span>.</span></a>
+<nav class="links">
+<a href="#servicios">Servicios</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#proceso">Proceso</a>
+<a href="#precios">Precios</a>
+<a href="#sobre">Sobre NEXORA</a>
+</nav>
+<a class="btn primary" href="#contacto">Hablemos ↗</a>
+</div>
+</header>
+
+<main>
+
+<div class="wrap hero" id="inicio">
+<div class="reveal">
+<div class="eyebrow"><span class="dot"></span>Estudio digital independiente</div>
+<h1>Digital ideas.<br><span class="shine">Real impact.</span></h1>
+<p class="lead">Digital experiences. Built for what's next. Creamos páginas web modernas, chatbots con inteligencia artificial y experiencias digitales pensadas para negocios que quieren dar el siguiente paso.</p>
+<div class="actions">
+<a class="btn primary" href="#contacto">EMPEZAR UN PROYECTO ↗</a>
+<a class="btn" href="#proyectos">VER PROYECTOS ↓</a>
+</div>
+<p class="note">Diseño con intención. Tecnología útil. Ideas que avanzan.</p>
+</div>
+<div class="visual reveal">
+<div class="orb"></div>
+<div class="orbit-label l1"><b>01 / WEB</b>Diseño moderno</div>
+<div class="orbit-label l2"><b>02 / AI</b>Chatbots inteligentes</div>
+<div class="orbit-label l3"><b>03 / DIGITAL</b>Soluciones a medida</div>
+</div>
+</div>
+
+<section id="servicios">
+<div class="wrap">
+<div class="sectionhead reveal">
+<div>
+<div class="kicker">Qué hacemos</div>
+<h2>Tu negocio merece una presencia digital a su altura.</h2>
+</div>
+<p>Soluciones claras y actuales para presentar tu marca, atender a tus clientes y crecer online.</p>
+</div>
+<div class="grid">
+<article class="card reveal">
+<div class="iconbox">↗</div>
+<h3>Páginas web</h3>
+<p>Webs adaptadas a móvil, con diseño cuidado, estructura clara y llamadas a la acción para convertir visitas en contactos.</p>
+</article>
+<article class="card reveal">
+<div class="iconbox">✳</div>
+<h3>Chatbots con IA</h3>
+<p>Asistentes que responden preguntas frecuentes y ayudan a tus visitantes a encontrar información, incluso fuera de horario.</p>
+</article>
+<article class="card reveal">
+<div class="iconbox">⌘</div>
+<h3>Soluciones digitales</h3>
+<p>Ideas y herramientas digitales pensadas para las necesidades reales de tu negocio o proyecto.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section id="proyectos">
+<div class="wrap">
+<div class="sectionhead reveal">
+<div>
+<div class="kicker">Trabajo seleccionado</div>
+<h2>Ideas que salen de la pantalla y se ponen en marcha.</h2>
+</div>
+<p>Un proyecto real que muestra cómo la información puede ser más fácil de encontrar.</p>
+</div>
+<div class="project reveal">
+<div class="projectvisual">
+<div class="browser">
+<div class="browserbar"><i></i><i></i><i></i></div>
+<div class="tag">ASISTENTE IA</div>
+<div class="mocktitle">IES Gerardo Molina</div>
+<div class="mockline"></div>
+<div class="mockline short"></div>
+<div class="mockline"></div>
+</div>
+</div>
+<div>
+<span class="tag">CHATBOT · EDUCACIÓN</span>
+<h2>IES Gerardo Molina</h2>
+<p>Creé este asistente virtual para mi instituto, con el objetivo de que alumnos y familias encuentren información del centro de forma rápida y en español. De momento responde sobre la oferta de ciclos formativos.</p>
+<p>No fue un proyecto fácil. Más allá de escribir preguntas y respuestas, el trabajo incluyó:</p>
+<ul>
+<li>Probar distintas herramientas hasta encontrar una opción gratuita que se ajustara al proyecto</li>
+<li>Preparar y organizar la información del centro para que el asistente la entienda</li>
+<li>Configurarlo para responder siempre en español, no inventar datos y derivar a la secretaría cuando no sabe algo</li>
+<li>Probarlo una y otra vez, corrigiendo errores hasta que respondiera bien</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="proceso">
+<div class="wrap">
+<div class="sectionhead reveal">
+<div>
+<div class="kicker">Cómo trabajamos</div>
+<h2>Un proceso sencillo, de principio a fin.</h2>
+</div>
+<p>Comunicación clara en cada etapa. Sin complicaciones innecesarias.</p>
+</div>
+<div class="steps">
+<div class="step reveal"><h3>Nos cuentas</h3><p>Hablamos de tu idea, tu negocio y lo que necesitas conseguir.</p></div>
+<div class="step reveal"><h3>Lo definimos</h3><p>Acordamos alcance, plazos y presupuesto antes de empezar.</p></div>
+<div class="step reveal"><h3>Lo construimos</h3><p>Diseñamos y desarrollamos tu solución con revisiones contigo.</p></div>
+<div class="step reveal"><h3>Lo lanzamos</h3><p>Revisamos los detalles y dejamos el proyecto listo para usar.</p></div>
+</div>
+</div>
+</section>
+
+<section id="precios">
+<div class="wrap">
+<div class="sectionhead reveal">
+<div>
+<div class="kicker">Precios orientativos</div>
+<h2>Un punto de partida para tu proyecto.</h2>
+</div>
+<p>El precio final depende de las funciones, el contenido y el alcance acordado.</p>
+</div>
+<div class="grid">
+<article class="pricecard reveal">
+<span class="tag">PRESENCIA ONLINE</span>
+<h3>Página web</h3>
+<div class="price">Desde 249€</div>
+<p>Para presentar tu negocio de forma profesional.</p>
+<ul>
+<li>Diseño adaptable a móvil</li>
+<li>Secciones esenciales</li>
+<li>Contacto y enlaces</li>
+</ul>
+<a class="btn" href="#contacto">Consultar proyecto ↗</a>
+</article>
+<article class="pricecard featured reveal">
+<span class="tag">ATENCIÓN AUTOMATIZADA</span>
+<h3>Chatbot con IA</h3>
+<div class="price">Desde 149€</div>
+<p>Para ayudar a tus clientes a resolver dudas frecuentes.</p>
+<ul>
+<li>Configuración inicial</li>
+<li>Respuestas basadas en información</li>
+<li>Orientación para integrarlo</li>
+</ul>
+<a class="btn primary" href="#contacto">Consultar proyecto ↗</a>
+</article>
+<article class="pricecard reveal">
+<span class="tag">SOLUCIÓN COMPLETA</span>
+<h3>Web + chatbot</h3>
+<div class="price">Desde 349€</div>
+<p>Una presencia web con un asistente integrado.</p>
+<ul>
+<li>Página web</li>
+<li>Chatbot con IA</li>
+<li>Configuración coordinada</li>
+</ul>
+<a class="btn" href="#contacto">Consultar proyecto ↗</a>
+</article>
+</div>
+<p class="formhint" style="margin-top:18px">Precios iniciales orientativos. El presupuesto definitivo se confirma por escrito antes de comenzar.</p>
+</div>
+</section>
+
+<section id="sobre">
+<div class="wrap about">
+<div class="reveal">
+<div class="kicker">Sobre NEXORA</div>
+<div class="bigmark">NEX<br>ORA.</div>
+</div>
+<div class="reveal">
+<h2>Aprender. Crear. Mejorar.</h2>
+<p>NEXORA nace de la curiosidad por la tecnología y las ganas de convertir ideas en proyectos digitales útiles.</p>
+<p>He aprendido creando, probando, equivocándome y volviendo a intentarlo. Hoy centro ese aprendizaje en páginas web y chatbots con inteligencia artificial para ayudar a negocios y personas a dar sus primeros pasos digitales.</p>
+<p>Cada proyecto es una oportunidad para escuchar, encontrar una solución y construir algo que tenga sentido para quien lo necesita.</p>
+</div>
+</div>
+</section>
+
+<section id="opiniones">
+<div class="wrap">
+<div class="quote reveal">
+<strong>Tu proyecto podría ser el siguiente.</strong>
+Estoy construyendo NEXORA proyecto a proyecto. Cuando haya opiniones reales de clientes, aparecerán aquí con su permiso.
+</div>
+</div>
+</section>
+
+<section id="contacto">
+<div class="wrap contactbox">
+<div class="reveal">
+<div class="kicker">Hablemos</div>
+<h2>¿Tienes una idea? Hagámosla realidad.</h2>
+<p>Cuéntame qué necesitas. Revisaré tu propuesta y me pondré en contacto contigo para hablar de los siguientes pasos.</p>
+<p><strong>Email</strong><br><a href="mailto:anouarramdani50@gmail.com">anouarramdani50@gmail.com</a></p>
+<p><strong>Instagram</strong><br><a href="https://instagram.com/anouarweb" target="_blank" rel="noopener noreferrer">@anouarweb ↗</a></p>
+</div>
+
+<form id="projectForm" class="reveal">
+<input name="nombre" placeholder="Tu nombre" required>
+<input name="empresa" placeholder="Empresa o negocio (opcional)">
+<input name="email" type="email" placeholder="Tu email" required>
+<select name="servicio" required>
+<option value="">¿Qué necesitas?</option>
+<option>Página web</option>
+<option>Chatbot con IA</option>
+<option>Página web + chatbot</option>
+<option>Otro proyecto</option>
+</select>
+<textarea name="idea" placeholder="Cuéntame un poco sobre tu idea..." required></textarea>
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+<button class="btn primary" type="submit">ENVIAR SOLICITUD ↗</button>
+<p class="status" id="formStatus" role="status" aria-live="polite"></p>
+</form>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap footerin">
+<a class="logo" href="#inicio">NEXORA<span>.</span></a>
+<span>Digital experiences. Built for what's next.</span>
+<span>© <span id="year"></span> NEXORA</span>
+</div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}
+  })
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const form=document.getElementById('projectForm');
+const statusEl=document.getElementById('formStatus');
+const sendBtn=form.querySelector('button');
+
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  statusEl.className='status';
+  statusEl.textContent='Enviando...';
+  sendBtn.disabled=true;
+
+  const d=Object.fromEntries(new FormData(form));
+  d.access_key='PEGA_AQUI_TU_CLAVE';
+  d.subject='Nuevo proyecto NEXORA — '+d.servicio;
+  d.from_name='NEXORA web';
+
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify(d)
+    });
+    const j=await r.json();
+    if(!j.success)throw new Error(j.message);
+    form.reset();
+    statusEl.className='status ok';
+    statusEl.textContent='¡Enviado! Gracias por escribirme. Intentaré responderte lo más rápido posible.';
+  }catch(err){
+    statusEl.className='status err';
+    statusEl.textContent='No se ha podido enviar. Inténtalo de nuevo o escríbeme a anouarramdani50@gmail.com.';
+  }
+  sendBtn.disabled=false;
+});
+</script>
 
 </body>
 </html>
