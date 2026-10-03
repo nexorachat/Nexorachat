@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NEXORA crea páginas web modernas, chatbots con inteligencia artificial y experiencias digitales para negocios.">
+  <title>NEXORA — Digital experiences. Built for what's next.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07080c;--panel:#10121a;--text:#f4f5f8;--muted:#a2a6b4;--line:rgba(255,255,255,.12);--accent:#a9ffcb;--accent2:#8aa4ff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 75% 10%,rgba(80,100,255,.14),transparent 35%),radial-gradient(ellipse at 10% 45%,rgba(89,255,180,.07),transparent 32%)}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+    .nav{position:fixed;z-index:20;top:14px;left:50%;transform:translateX(-50%);width:min(1200px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border:1px solid var(--line);border-radius:18px;background:rgba(9,10,15,.78);backdrop-filter:blur(18px)}
+    .logo{font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:.16em}.logo span{color:var(--accent)}
+    .navlinks{display:flex;gap:24px;font-size:.84rem;color:#c6c9d2}.navlinks a:hover{color:var(--accent)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:10px;border:1px solid var(--line);font-size:.85rem;font-weight:700;transition:.25s;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#07100b;border-color:var(--accent)}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(169,255,203,.13)}
+    .hero{min-height:94vh;display:flex;align-items:center;padding:150px 0 90px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 15px var(--accent)}
+    h1,h2,h3,p{margin-top:0}h1{font:600 clamp(3.4rem,8vw,7.4rem)/.93 "Space Grotesk",sans-serif;letter-spacing:-.075em;margin:24px 0}
+    h1 .gradient{background:linear-gradient(105deg,#fff 15%,#a9ffcb 55%,#8aa4ff 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{max-width:570px;color:var(--muted);font-size:1.1rem;line-height:1.8}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .micro{font-size:.78rem;color:#777d8c;margin-top:24px}
+    .visual{min-height:420px;position:relative;display:grid;place-items:center;perspective:900px}
+    .orb{width:min(340px,75vw);aspect-ratio:1;border-radius:50%;position:relative;background:radial-gradient(circle at 32% 25%,#d7ffe7 0,#9dffd0 7%,#4d8b9a 22%,#252a65 47%,#10111b 68%);box-shadow:inset -28px -30px 65px #020309,0 0 80px rgba(116,140,255,.23);animation:float 7s ease-in-out infinite;transform:rotateX(14deg) rotateY(-20deg)}
+    .orb:before,.orb:after{content:"";position:absolute;inset:-22px;border:1px solid rgba(169,255,203,.35);border-radius:50%;transform:rotateX(66deg) rotateZ(-24deg)}
+    .orb:after{inset:-46px;border-color:rgba(138,164,255,.25);transform:rotateX(67deg) rotateZ(34deg)}
+    .orbit-label{position:absolute;right:0;bottom:35px;padding:16px 18px;background:rgba(18,20,30,.78);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px);font-size:.8rem}
+    .orbit-label strong{display:block;color:var(--accent);font-size:1rem}
+    @keyframes float{0%,100%{transform:translateY(0) rotateX(14deg) rotateY(-20deg)}50%{transform:translateY(-14px) rotateX(20deg) rotateY(-8deg)}}
+    section{padding:100px 0}.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+    .kicker{color:var(--accent);font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    h2{font:600 clamp(2.2rem,5vw,4.2rem)/1.05 "Space Grotesk",sans-serif;letter-spacing:-.06em;margin:12px 0 0}
+    .section-desc{color:var(--muted);max-width:390px;margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{padding:28px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));transition:.3s;min-height:230px}
+    .card:hover{transform:translateY(-5px);border-color:rgba(169,255,203,.4);background:linear-gradient(145deg,rgba(169,255,203,.07),rgba(255,255,255,.015))}
+    .iconbox{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:var(--accent);background:rgba(169,255,203,.09);border:1px solid rgba(169,255,203,.2);font-size:1.2rem;margin-bottom:25px}
+    h3{font:600 1.35rem "Space Grotesk",sans-serif;margin-bottom:10px}.card p{color:var(--muted);font-size:.93rem;margin-bottom:0}
+    .project{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;border:1px solid var(--line);border-radius:24px;padding:clamp(24px,5vw,55px);background:linear-gradient(125deg,rgba(138,164,255,.08),rgba(255,255,255,.015))}
+    .project-art{min-height:280px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 70% 20%,rgba(169,255,203,.3),transparent 24%),linear-gradient(135deg,#151a2b,#090b12);display:grid;place-items:center;position:relative;overflow:hidden}
+    .project-art:before{content:"";position:absolute;width:280px;height:280px;border:1px solid rgba(169,255,203,.3);border-radius:50%;box-shadow:0 0 70px rgba(138,164,255,.12),inset 0 0 50px rgba(138,164,255,.08)}
+    .project-mark{position:relative;text-align:center;font:600 clamp(2rem,4vw,3.3rem) "Space Grotesk";letter-spacing:-.06em}.project-mark small{display:block;font:500 .72rem "DM Sans";letter-spacing:.2em;color:var(--accent);margin-top:8px}
+    .project p{color:var(--muted)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:#c6c9d2;font-size:.75rem;margin:0 5px 8px 0}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding-top:20px;border-top:1px solid var(--line)}.step-num{font:600 2rem "Space Grotesk";color:var(--accent);margin-bottom:20px}.step p{font-size:.9rem;color:var(--muted)}
+    .price-note{font-size:.82rem;color:var(--muted);margin-top:18px}.price{font:600 2rem "Space Grotesk";margin:20px 0}.price small{font:400 .85rem "DM Sans";color:var(--muted)}
+    .featured{border-color:rgba(169,255,203,.45);box-shadow:0 0 45px rgba(169,255,203,.045)}
+    .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}.about-big{font:600 clamp(2rem,4vw,3.3rem)/1.1 "Space Grotesk";letter-spacing:-.055em}.about p{color:var(--muted)}
+    .quote{padding:24px;border-left:2px solid var(--accent);background:rgba(255,255,255,.025);color:#d8dbe3;border-radius:0 12px 12px 0}
+    .contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}.contact-info p{color:var(--muted)}.contact-links{display:grid;gap:12px;margin-top:25px}.contact-links a{color:var(--accent);overflow-wrap:anywhere}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}label{font-size:.8rem;color:#c8cbd4}
+    input,select,textarea{width:100%;font:inherit;color:var(--text);background:#0d0f16;border:1px solid var(--line);border-radius:10px;padding:13px 14px;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--accent)}textarea{min-height:125px;resize:vertical}select option{background:#0d0f16}
+    .form-note{font-size:.76rem;color:#818695;grid-column:1/-1}
+    footer{padding:28px 0;border-top:1px solid var(--line);color:#858a99;font-size:.8rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:850px){.navlinks{display:none}.hero-grid,.project,.about,.contact{grid-template-columns:1fr}.hero{padding-top:130px}.visual{min-height:350px}.cards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.section-top{display:block}.section-desc{margin-top:16px}.project-art{min-height:240px}}
+    @media(max-width:560px){.wrap{width:calc(100% - 30px)}.nav{padding:12px 14px}.nav .btn{padding:10px 12px;font-size:.75rem}.hero{min-height:auto;padding-bottom:55px}.hero-grid{gap:12px}h1{font-size:clamp(3.4rem,17vw,5rem)}.visual{min-height:310px}.orb{width:235px}.orbit-label{right:0;bottom:10px}.cards,.steps{grid-template-columns:1fr}section{padding:72px 0}.card{min-height:0}.project{padding:22px}.about{gap:25px}form{grid-template-columns:1fr}.field.full,.form-note{grid-column:auto}.footer-inner{display:grid}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="logo" href="#inicio" aria-label="NEXORA inicio">NEX<span>O</span>RA</a>
+    <div class="navlinks"><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#proceso">Proceso</a><a href="#precios">Precios</a><a href="#sobre">Sobre NEXORA</a></div>
+    <a class="btn btn-primary" href="#contacto">Hablemos <span>↗</span></a>
+  </nav>
+
+  <main>
+    <header class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Estudio digital independiente</div>
+          <h1>Digital<br><span class="gradient">experiences.</span></h1>
+          <p class="lead">Creamos páginas web modernas y chatbots con inteligencia artificial para negocios que quieren dar el siguiente paso.</p>
+          <p style="font:500 clamp(1rem,2vw,1.35rem) 'Space Grotesk';color:#d8dbe3">Built for what's next.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#contacto">EMPEZAR UN PROYECTO <span>→</span></a><a class="btn" href="#proyectos">VER PROYECTOS <span>↘</span></a></div>
+          <p class="micro">Diseño web · Inteligencia artificial · Soluciones digitales</p>
+        </div>
+        <div class="visual reveal" aria-label="Elemento visual abstracto tridimensional">
+          <div class="orb"></div>
+          <div class="orbit-label"><strong>Ideas → Realidad</strong>Diseñado para avanzar.</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="servicios">
+      <div class="wrap">
+        <div class="section-top reveal"><div><div class="kicker">01 / Qué hacemos</div><h2>Ideas claras.<br>Soluciones digitales.</h2></div><p class="section-desc">Tecnología útil y diseño cuidado para ayudarte a presentar tu negocio, ahorrar tiempo y conectar con tus clientes.</p></div>
+        <div class="cards">
+          <article class="card reveal"><div class="iconbox">↗</div><h3>Páginas web</h3><p>Webs modernas, adaptadas al móvil y pensadas para presentar tu negocio con claridad y profesionalidad.</p></article>
+          <article class="card reveal"><div class="iconbox">✳</div><h3>Chatbots con IA</h3><p>Asistentes que responden preguntas frecuentes y ayudan a tus visitantes a encontrar la información que necesitan.</p></article>
+          <article class="card reveal"><div class="iconbox">⌘</div><h3>Soluciones digitales</h3><p>Una idea concreta, una necesidad de tu negocio o una mejora digital. Lo hablamos y definimos el alcance.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="wrap">
+        <div class="section-top reveal"><div><div class="kicker">02 / Trabajo seleccionado</div><h2>Hecho para resolver.</h2></div><p class="section-desc">Un proyecto real que demuestra cómo la información puede convertirse en una experiencia conversacional.</p></div>
+        <article class="project reveal">
+          <div class="project-art"><div class="project-mark">IES<span style="color:var(--accent)">.</span><br>GERARDO MOLINA<small>AI CHATBOT EXPERIENCE</small></div></div>
+          <div><div class="kicker">Proyecto destacado · Educación</div><h3 style="font-size:2rem;margin-top:15px">Chatbot del IES Gerardo Molina</h3><p>Un asistente conversacional para ayudar a encontrar información del centro de forma sencilla. Configurado para responder en español y orientar a secretaría cuando no dispone de una respuesta.</p><div style="margin:18px 0"><span class="tag">Chatbot con IA</span><span class="tag">Fuentes informativas</span><span class="tag">Atención digital</span></div><a class="btn btn-primary" href="https://share.conferbot.com/c/n5w7wafp" target="_blank" rel="noopener noreferrer">PROBAR CHATBOT ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <div class="wrap">
+        <div class="section-top reveal"><div><div class="kicker">03 / Cómo trabajamos</div><h2>De la idea al lanzamiento.</h2></div><p class="section-desc">Un proceso directo, con comunicación clara en cada etapa.</p></div>
+        <div class="steps">
+          <div class="step reveal"><div class="step-num">01</div><h3>Nos cuentas</h3><p>Me explicas tu negocio, tus objetivos y qué necesitas conseguir.</p></div>
+          <div class="step reveal"><div class="step-num">02</div><h3>Definimos</h3><p>Concretamos el alcance, los plazos y un presupuesto adaptado al proyecto.</p></div>
+          <div class="step reveal"><div class="step-num">03</div><h3>Lo construimos</h3><p>Desarrollo la solución y te mantengo al tanto del progreso.</p></div>
+          <div class="step reveal"><div class="step-num">04</div><h3>Lo lanzamos</h3><p>Revisamos el resultado y coordinamos la entrega final.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="precios">
+      <div class="wrap">
+        <div class="section-top reveal"><div><div class="kicker">04 / Inversión</div><h2>Un punto de partida.</h2></div><p class="section-desc">Cada proyecto es diferente. Estos precios son orientativos; el presupuesto final depende de lo que necesites.</p></div>
+        <div class="cards">
+          <article class="card reveal"><div class="kicker">01 / Web</div><h3>Diseño web</h3><p>Una presencia online para presentar tu negocio, servicios y formas de contacto.</p><div class="price">Desde 249€</div><a class="btn" href="#contacto">Consultar proyecto →</a></article>
+          <article class="card featured reveal"><div class="kicker">02 / IA</div><h3>Chatbot con IA</h3><p>Un asistente adaptado a la información de tu negocio y a las preguntas de tus visitantes.</p><div class="price">Desde 149€</div><a class="btn btn-primary" href="#contacto">Consultar proyecto →</a></article>
+          <article class="card reveal"><div class="kicker">03 / Combo</div><h3>Web + chatbot</h3><p>Una web con un asistente conversacional integrado para ofrecer una experiencia más completa.</p><div class="price">Desde 349€</div><a class="btn" href="#contacto">Consultar proyecto →</a></article>
+        </div>
+        <p class="price-note">Importes orientativos, no una oferta cerrada. El alcance, las herramientas de terceros, el mantenimiento y los impuestos aplicables se concretan antes de empezar.</p>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about">
+        <div class="reveal"><div class="kicker">05 / Sobre NEXORA</div><div class="about-big">Construir.<br>Aprender.<br>Volver a intentarlo.</div></div>
+        <div class="reveal"><p>NEXORA nace de la curiosidad por crear cosas digitales y de las ganas de convertir ideas en proyectos reales. He aprendido por mi cuenta, probando herramientas, resolviendo problemas y mejorando en cada intento.</p><p>Hoy centro ese aprendizaje en crear páginas web y chatbots con inteligencia artificial para personas y negocios que quieren dar forma a su presencia digital.</p><div class="quote">“Digital experiences. Built for what's next.”</div></div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="wrap contact">
+        <div class="contact-info reveal"><div class="kicker">06 / Hablemos</div><h2>¿Tienes una idea?<br><span style="color:var(--accent)">Hagámosla realidad.</span></h2><p>Cuéntame qué tienes en mente. Revisaré tu mensaje y nos pondremos de acuerdo sobre los siguientes pasos.</p><div class="contact-links"><a href="mailto:anouarramdani50@gmail.com">anouarramdani50@gmail.com ↗</a><a href="https://www.instagram.com/anouarweb/" target="_blank" rel="noopener noreferrer">@anouarweb en Instagram ↗</a></div></div>
+        <div class="card reveal">
+          <form id="projectForm">
+            <div class="field"><label for="name">Nombre *</label><input id="name" name="name" autocomplete="name" required placeholder="Tu nombre"></div>
+            <div class="field"><label for="business">Empresa o negocio</label><input id="business" name="business" autocomplete="organization" placeholder="Nombre del negocio"></div>
+            <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@email.com"></div>
+            <div class="field"><label for="service">¿Qué necesitas? *</label><select id="service" name="service" required><option value="">Selecciona un servicio</option><option>Página web</option><option>Chatbot con IA</option><option>Página web + chatbot</option><option>Otra solución digital</option></select></div>
+            <div class="field full"><label for="idea">Cuéntame tu idea *</label><textarea id="idea" name="idea" required placeholder="¿Qué te gustaría crear?"></textarea></div>
+            <div class="field full"><button class="btn btn-primary" type="submit">PREPARAR MENSAJE <span>→</span></button></div>
+            <p class="form-note">Al enviar, se abrirá tu aplicación de correo con el mensaje preparado. Tendrás que pulsar “Enviar” para que me llegue.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><a class="logo" href="#inicio">NEX<span>O</span>RA</a><span>Digital experiences. Built for what's next.</span><span>© <span id="year"></span> NEXORA · Hecho con intención.</span></div></footer>
+  <script>
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('projectForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const f = new FormData(this);
+      const subject = encodeURIComponent('Nuevo proyecto NEXORA — ' + f.get('service'));
+      const body = encodeURIComponent('Nombre: ' + f.get('name') + '\nEmpresa: ' + (f.get('business') || 'No indicado') + '\nEmail: ' + f.get('email') + '\nServicio: ' + f.get('service') + '\n\nIdea:\n' + f.get('idea'));
+      window.location.href = 'mailto:anouarramdani50@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
